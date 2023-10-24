@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./project.css";
 
 const ProjectSelectionPage = () => {
   const [inputValue, setInputValue] = useState("");
@@ -106,7 +107,8 @@ const ProjectSelectionPage = () => {
                 />
               ) : (
                 <>
-                  {project.id}.{project.title}
+                  <span className="project__number">{project.id}</span>.
+                  <span className="project__title">{project.title}</span>
                 </>
               )}
             </Link>
