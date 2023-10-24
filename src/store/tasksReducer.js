@@ -16,7 +16,12 @@ export const tasksReducer = (state = tasksState, action) => {
     case "ADD_COMMENT":
       return { ...state, comments: [...state.comments, action.payload] };
     case "REMOVE_COMMENT":
-      return {};
+      return {
+        ...state,
+        comments: [
+          ...state.comments.filter((comment) => comment.id !== action.payload),
+        ],
+      };
     case "ADD_SUBTASK":
       return { ...state, subtasks: [...state.subtasks, action.payload] };
     case "REMOVE_SUBTASK":

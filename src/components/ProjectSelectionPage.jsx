@@ -51,14 +51,12 @@ const ProjectSelectionPage = () => {
   };
 
   const startEditingProject = (id) => {
-    console.log("Функция отработала");
     setEditingProjectId(id);
     const projectToEdit = projects.find((project) => project.id === id);
     setEditInputValue(projectToEdit.title);
   };
 
   const saveEditedProjectTitle = (id, newTitle) => {
-    console.log("Функция отработала");
     dispatch({ type: "EDIT_PROJECT_TITLE", payload: { id, title: newTitle } });
     setInputValue("");
     setEditingProjectId(null);
@@ -85,7 +83,7 @@ const ProjectSelectionPage = () => {
       </button>
       <ul>
         {projects.map((project) => (
-          <li key={project.id}>
+          <li className="project__wrap" key={project.id}>
             <Link
               to={`/project/${project.id}`}
               onClick={(e) => {
@@ -121,11 +119,15 @@ const ProjectSelectionPage = () => {
                 Сохранить
               </button>
             ) : (
-              <button onClick={() => startEditingProject(project.id)}>
-                Редактировать
-              </button>
+              <div>
+                <button onClick={() => startEditingProject(project.id)}>
+                  Редактировать
+                </button>
+                <button onClick={() => removeProject(project.id)}>
+                  Удалить
+                </button>
+              </div>
             )}
-            <button onClick={() => removeProject(project.id)}>Удалить</button>
           </li>
         ))}
       </ul>

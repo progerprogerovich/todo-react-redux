@@ -82,6 +82,10 @@ const Task = () => {
     dispatch({ type: "ADD_COMMENT", payload: comment });
   };
 
+  const removeComment = (commentId) => {
+    dispatch({ type: "REMOVE_COMMENT", payload: commentId });
+  };
+
   return (
     <>
       <button className="button-add__task" onClick={() => setActiveModal(true)}>
@@ -143,8 +147,11 @@ const Task = () => {
                     {comments
                       .filter((comment) => comment.taskId === task.id)
                       .map((comment) => (
-                        <div key={comment.id}>
+                        <div key={comment.id} className="comment">
                           <p>{comment.description}</p>
+                          <button onClick={() => removeComment(comment.id)}>
+                            Удалить комментарий
+                          </button>
                         </div>
                       ))}
                     <div className="status__button-wrap">
