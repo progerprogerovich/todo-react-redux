@@ -7,7 +7,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<ProjectSelectionPage />}></Route>
+          <Route
+            path="/todo-react-redux/"
+            element={<ProjectSelectionPage />}
+          ></Route>
           <Route path="/project/:id" element={<Task />}></Route>
         </Routes>
       </header>
