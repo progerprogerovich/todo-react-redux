@@ -1,4 +1,3 @@
-// ModalSubtask.js
 import React, { useState } from "react";
 import "./modal.css";
 
@@ -29,9 +28,24 @@ const ModalSubtask = ({
       description,
     };
 
+    if (newSubTask.title === "" && newSubTask.description === "") {
+      alert("Вы ввели пустые значения");
+      return;
+    }
+    if (newSubTask.title === "") {
+      alert("Вы ввели пустой заголовок");
+      return;
+    }
+    if (newSubTask.description === "") {
+      alert("Вы ввели пустое описание");
+      return;
+    }
+
     addSubtask(newSubTask, taskId);
 
     setActiveSubTaskModal(false);
+    setTitle("");
+    setDescription("");
   };
 
   return (
@@ -39,25 +53,27 @@ const ModalSubtask = ({
       className={activeSubTaskModal ? "modal active" : "modal"}
       onClick={() => setActiveSubTaskModal(false)}
     >
-      <div
-        className={
-          activeSubTaskModal ? "modal__content active" : "modal__content"
-        }
-        onClick={(event) => event.stopPropagation()}
-      >
-        <h1>Добавить подзадачу</h1>
-        <div className="modal__content_wrap">
-          <span>Заголовок</span>
-          <input type="text" value={title} onChange={handleTitleChange} />
-          <span>Описание</span>
-          <input
-            type="text"
-            value={description}
-            onChange={handleDescriptionChange}
-          />
+      <form onSubmit={handleAddSubtask}>
+        <div
+          className={
+            activeSubTaskModal ? "modal__content active" : "modal__content"
+          }
+          onClick={(event) => event.stopPropagation()}
+        >
+          <h1>Добавить подзадачу</h1>
+          <div className="modal__content_wrap">
+            <span>Заголовок</span>
+            <input type="text" value={title} onChange={handleTitleChange} />
+            <span>Описание</span>
+            <input
+              type="text"
+              value={description}
+              onChange={handleDescriptionChange}
+            />
+          </div>
+          <button type="submit">Добавить подзадачу</button>
         </div>
-        <button onClick={handleAddSubtask}>Добавить подзадачу</button>
-      </div>
+      </form>
     </div>
   );
 };

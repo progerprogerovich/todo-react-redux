@@ -21,14 +21,9 @@ li {
   margin-top: 10px;
 }
 
-.project__wrap {
-  display: flex;
-  gap: 10px;
-}
-
 input {
   height: 30px;
-  margin-top: 10px; /* Добавляем отступ сверху для input */
+  margin-top: 10px;
 }
 
 .project__wrap {
@@ -43,4 +38,6 @@ input {
 
 .project__title {
   font-size: 18px;
+  position: relative;
+  top: 10px;
 }

@@ -105,8 +105,9 @@ const ProjectSelectionPage = () => {
                 />
               ) : (
                 <>
-                  <span className="project__number">{project.id}</span>.
-                  <span className="project__title">{project.title}</span>
+                  <p className="project__title">
+                    {project.id}.<span>{project.title}</span>
+                  </p>
                 </>
               )}
             </Link>

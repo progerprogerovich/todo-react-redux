@@ -1,18 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 import ProjectSelectionPage from "./components/ProjectSelectionPage";
 import Task from "./components/Task";
+import NotFound from "./components/NotFound";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./store/store";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Routes>
-          <Route
-            path="/todo-react-redux"
-            element={<ProjectSelectionPage />}
-          ></Route>
-          <Route path="/project/:id" element={<Task />}></Route>
-        </Routes>
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes>
+            <Route
+              path="/todo-react-redux"
+              element={<ProjectSelectionPage />}
+            />
+            <Route path="/project/:id" element={<Task />} />
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+        </PersistGate>
       </header>
     </div>
   );

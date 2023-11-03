@@ -1,10 +1,9 @@
 import { createStore } from "redux";
 import { combineReducers } from "redux";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-
 import { projectsReducer } from "./projectsReducer";
 import { tasksReducer } from "./tasksReducer";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // используется local storage
 
 const rootReducer = combineReducers({
   projects: projectsReducer,

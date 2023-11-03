@@ -1,8 +1,9 @@
 const tasksState = {
   tasks: [],
   comments: [],
-  subtasks: [],
 };
+
+const UPDATE_TASK_LIST = "UPDATE_TASK_LIST";
 
 export const tasksReducer = (state = tasksState, action) => {
   switch (action.type) {
@@ -13,25 +14,14 @@ export const tasksReducer = (state = tasksState, action) => {
         ...state,
         tasks: [...state.tasks.filter((task) => task.id !== action.payload)],
       };
-    case "ADD_COMMENT":
-      return { ...state, comments: [...state.comments, action.payload] };
-    case "REMOVE_COMMENT":
-      return {
-        ...state,
-        comments: [
-          ...state.comments.filter((comment) => comment.id !== action.payload),
-        ],
-      };
-    case "ADD_SUBTASK":
-      return { ...state, subtasks: [...state.subtasks, action.payload] };
-    case "REMOVE_SUBTASK":
-      return {
-        ...state,
-        subtasks: [
-          ...state.subtasks.filter((subtask) => subtask.id !== action.payload),
-        ],
-      };
+    case UPDATE_TASK_LIST:
+      return { ...state, tasks: action.tasks };
     default:
       return state;
   }
 };
+
+export const updateTaskList = (tasks) => ({
+  type: UPDATE_TASK_LIST,
+  tasks,
+});

@@ -1,30 +1,27 @@
+.button__back {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .status__wrap {
   display: flex;
-  gap: 50px;
-  margin: 5px;
-  justify-content: center;
+  flex-wrap: wrap; /* Поддержка переноса элементов на новую строку */
+  gap: 20px;
+  justify-content: space-evenly;
+}
+
+.status__container {
+  width: 100%; /* Ширина контейнера для каждого приоритета */
+  max-width: 400px; /* Максимальная ширина элемента */
 }
 
 .status__item {
   border: 1px solid #000;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Увеличенный отступ между элементами */
   text-align: center;
   padding: 10px;
-}
-
-.status__button-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-bottom: 5px;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.priority {
-  margin-left: 10px;
+  border-radius: 10px;
 }
 
 .button-add__task {
