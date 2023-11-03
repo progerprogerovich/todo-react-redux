@@ -1,10 +1,5 @@
 const projectsState = {
-  projects: [
-    {
-      id: 1,
-      title: "Первый проект",
-    },
-  ],
+  projects: [],
 };
 
 export const projectsReducer = (state = projectsState, action) => {
