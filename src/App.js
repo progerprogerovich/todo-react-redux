@@ -11,11 +11,8 @@ function App() {
       <header className="App-header">
         <PersistGate loading={null} persistor={persistor}>
           <Routes>
-            <Route
-              path="/todo-react-redux"
-              element={<ProjectSelectionPage />}
-            />
-            <Route path="/project/:id" element={<Task />} />
+            <Route exact path="/" element={<ProjectSelectionPage />} />
+            <Route exact path="/project/:id" element={<Task />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </PersistGate>

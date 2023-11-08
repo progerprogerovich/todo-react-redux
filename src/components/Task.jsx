@@ -191,7 +191,7 @@ const Task = () => {
       <button className="button-add__task" onClick={() => setActiveModal(true)}>
         Добавить задачу
       </button>
-      <Link to="/todo-react-redux">
+      <Link to="/">
         <button className="button__back">Назад</button>
       </Link>
 
