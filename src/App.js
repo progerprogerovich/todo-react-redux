@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import ProjectSelectionPage from "./components/ProjectSelectionPage";
-import Task from "./components/Task";
 import NotFound from "./components/NotFound";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./store/store";
+import Task from "./components/Task/Task";
+import ProjectSelectionPage from "./components/Project/ProjectSelectionPage";
 
 function App() {
   return (

@@ -1,0 +1,13 @@
+.subtask__none,
+.subtask__done {
+  position: relative;
+  right: 10px;
+  margin: 0 auto;
+}
+
+.subtask__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}

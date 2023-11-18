@@ -65,6 +65,7 @@ const ProjectSelectionPage = () => {
   return (
     <div>
       <input
+        className="input__addProject"
         type="text"
         value={inputValue}
         onChange={handleInputChange}

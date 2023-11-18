@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./modal.css";
+import "./modalTask.css";
 
 const initialTaskState = {
   title: "",
@@ -8,10 +8,10 @@ const initialTaskState = {
   dateTime: "",
   priority: "Queue",
   workTime: "",
-  selectedStatus: "",
+  status: "",
 };
 
-const Modal = ({ activeModal, setActiveModal, addTask }) => {
+const ModalTask = ({ activeModal, setActiveModal, addTask }) => {
   const [task, setTask] = useState(initialTaskState);
 
   const handleChange = (event) => {
@@ -27,8 +27,20 @@ const Modal = ({ activeModal, setActiveModal, addTask }) => {
 
     const newTask = {
       ...task,
-      status: task.selectedStatus,
+      status: task.priority,
     };
+
+    if (task.priority === "Queue") {
+      newTask.status = "В очереди";
+    }
+
+    if (task.priority === "Development") {
+      newTask.status = "В разработке";
+    }
+
+    if (task.priority === "Done") {
+      newTask.status = "Выполнено";
+    }
 
     if (newTask.title === "") {
       alert("Вы ввели пустой заголовок");
@@ -47,11 +59,6 @@ const Modal = ({ activeModal, setActiveModal, addTask }) => {
 
     if (newTask.dateTime === "") {
       alert("Вы ввели пустую дату окончания");
-      return;
-    }
-
-    if (newTask.selectedStatus === "") {
-      alert("Вы не выбрали статус");
       return;
     }
 
@@ -124,30 +131,7 @@ const Modal = ({ activeModal, setActiveModal, addTask }) => {
               <option>Development</option>
               <option>Done</option>
             </select>
-
             <span>Текущий статус</span>
-            <div className="status__wrapper">
-              <label>
-                <input
-                  type="radio"
-                  name="selectedStatus"
-                  value="Выполнено"
-                  onChange={handleChange}
-                  checked={task.selectedStatus === "Выполнено"}
-                />
-                Выполнено
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="selectedStatus"
-                  value="Не выполнено"
-                  onChange={handleChange}
-                  checked={task.selectedStatus === "Не выполнено"}
-                />
-                Невыполнено
-              </label>
-            </div>
             <input type="file" />
           </div>
           <button type="submit">Добавить</button>
@@ -157,4 +141,4 @@ const Modal = ({ activeModal, setActiveModal, addTask }) => {
   );
 };
 
-export default Modal;
+export default ModalTask;

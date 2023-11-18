@@ -15,8 +15,8 @@ button:hover {
   background-color: #ff4500;
 }
 
-input,
-li {
+li,
+.input__addProject {
   margin-left: 10px;
   margin-top: 10px;
 }

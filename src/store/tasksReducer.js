@@ -1,6 +1,5 @@
 const tasksState = {
   tasks: [],
-  comments: [],
 };
 
 const UPDATE_TASK_LIST = "UPDATE_TASK_LIST";

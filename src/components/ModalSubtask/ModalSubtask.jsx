@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./modal.css";
+import "../Modal/modalTask.css";
 
 const ModalSubtask = ({
   activeSubTaskModal,
@@ -10,14 +10,9 @@ const ModalSubtask = ({
   const { taskId } = newSubTask;
 
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
   };
 
   const handleAddSubtask = (event) => {
@@ -25,19 +20,10 @@ const ModalSubtask = ({
 
     const newSubTask = {
       title,
-      description,
     };
 
-    if (newSubTask.title === "" && newSubTask.description === "") {
-      alert("Вы ввели пустые значения");
-      return;
-    }
     if (newSubTask.title === "") {
       alert("Вы ввели пустой заголовок");
-      return;
-    }
-    if (newSubTask.description === "") {
-      alert("Вы ввели пустое описание");
       return;
     }
 
@@ -45,7 +31,6 @@ const ModalSubtask = ({
 
     setActiveSubTaskModal(false);
     setTitle("");
-    setDescription("");
   };
 
   return (
@@ -64,12 +49,6 @@ const ModalSubtask = ({
           <div className="modal__content_wrap">
             <span>Заголовок</span>
             <input type="text" value={title} onChange={handleTitleChange} />
-            <span>Описание</span>
-            <input
-              type="text"
-              value={description}
-              onChange={handleDescriptionChange}
-            />
           </div>
           <button type="submit">Добавить подзадачу</button>
         </div>
