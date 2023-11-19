@@ -15,6 +15,10 @@ button:hover {
   background-color: #ff4500;
 }
 
+.no_projects {
+  margin-left: 10px;
+}
+
 li,
 .input__addProject {
   margin-left: 10px;
@@ -30,6 +34,7 @@ input {
   display: flex;
   gap: 10px;
   align-items: center;
+  text-align: center;
 }
 
 .project__number {
@@ -39,5 +44,5 @@ input {
 .project__title {
   font-size: 18px;
   position: relative;
-  top: 10px;
+  top: 12px;
 }

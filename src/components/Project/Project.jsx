@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./project.css";
 
-const ProjectSelectionPage = () => {
+const Project = () => {
   const [inputValue, setInputValue] = useState("");
   const [editingProjectId, setEditingProjectId] = useState(null);
   const [editInputValue, setEditInputValue] = useState("");
@@ -82,59 +82,65 @@ const ProjectSelectionPage = () => {
       >
         {editingProjectId ? "Сохранить" : "Добавить"}
       </button>
-      <ul>
-        {projects.map((project) => (
-          <li className="project__wrap" key={project.id}>
-            <Link
-              to={`/project/${project.id}`}
-              onClick={(e) => {
-                if (editingProjectId === project.id) {
-                  e.preventDefault(); // Предотвращение перехода при редактировании
-                }
-              }}
-            >
-              {editingProjectId === project.id ? (
-                <input
-                  type="text"
-                  value={editInputValue}
-                  onChange={handleEditInputChange}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      saveEditedProjectTitle(project.id, editInputValue);
-                    }
-                  }}
-                />
-              ) : (
-                <>
-                  <p className="project__title">
-                    {project.id}.<span>{project.title}</span>
-                  </p>
-                </>
-              )}
-            </Link>
-            {editingProjectId === project.id ? (
-              <button
-                onClick={() =>
-                  saveEditedProjectTitle(project.id, editInputValue)
-                }
+      <ul className="projects">
+        {projects.length === 0 ? (
+          <>
+            <h1 className="no_projects">Проектов нету</h1>
+          </>
+        ) : (
+          projects.map((project) => (
+            <li className="project__wrap" key={project.id}>
+              <Link
+                to={`/project/${project.id}`}
+                onClick={(e) => {
+                  if (editingProjectId === project.id) {
+                    e.preventDefault(); // Предотвращение перехода при редактировании
+                  }
+                }}
               >
-                Сохранить
-              </button>
-            ) : (
-              <div>
-                <button onClick={() => startEditingProject(project.id)}>
-                  Редактировать
+                {editingProjectId === project.id ? (
+                  <input
+                    type="text"
+                    value={editInputValue}
+                    onChange={handleEditInputChange}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        saveEditedProjectTitle(project.id, editInputValue);
+                      }
+                    }}
+                  />
+                ) : (
+                  <>
+                    <p className="project__title">
+                      {project.id}.<span>{project.title}</span>
+                    </p>
+                  </>
+                )}
+              </Link>
+              {editingProjectId === project.id ? (
+                <button
+                  onClick={() =>
+                    saveEditedProjectTitle(project.id, editInputValue)
+                  }
+                >
+                  Сохранить
                 </button>
-                <button onClick={() => removeProject(project.id)}>
-                  Удалить
-                </button>
-              </div>
-            )}
-          </li>
-        ))}
+              ) : (
+                <div>
+                  <button onClick={() => startEditingProject(project.id)}>
+                    Редактировать
+                  </button>
+                  <button onClick={() => removeProject(project.id)}>
+                    Удалить
+                  </button>
+                </div>
+              )}
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
 };
 
-export default ProjectSelectionPage;
+export default Project;
